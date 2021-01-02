@@ -26,11 +26,11 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
-app.get("/note", function(req, res) {
-  res.json(dbJSON);
+app.get("/notes", function(req, res) {
+  res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
-app.post("/note", function(req, res) {
+app.post("/notes", function(req, res) {
   // Validate request body
   if(!req.body.title) {
     return res.json({error: "Missing required title"});
@@ -55,7 +55,7 @@ app.post("/note", function(req, res) {
 });
 
 app.get("*", function(req, res) {
-  res.send("Sending you the homepage");
+  res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 // Starts the server to begin listening
