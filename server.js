@@ -23,7 +23,7 @@ app.use(express.json());
 // Basic route that sends the user first to the AJAX Page
 
 app.get("/", function(req, res) {
-  res.send("Proof of concept of storing data");
+  res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 app.get("/note", function(req, res) {
