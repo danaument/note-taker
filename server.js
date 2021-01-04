@@ -34,6 +34,18 @@ app.get("/api/notes", function(req, res) {
   res.json(dbJSON);
 });
 
+app.delete("/api/notes/:id", function(req, res) {
+  const deleteTarget =req.params["id"];
+  console.log(deleteTarget);
+  dbJSON.splice(dbJSON.findIndex(x => x.id === deleteTarget), 1);
+  fs.writeFile(path.join(__dirname, "db.json"), JSON.stringify(dbJSON), (err) => {
+    if (err) {
+      return res.json({error: "Error writing to file"});
+    }
+
+    return res.json(note);
+  });
+});
 
 app.post("/api/notes", function(req, res) {
   // Validate request body
