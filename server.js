@@ -31,7 +31,14 @@ app.get("/notes", function(req, res) {
 });
 
 app.get("/api/notes", function(req, res) {
+  // fs.readFile(path.join(__dirname, "db.json"), 'utf8', (err, data) => {
+  //   if (err) {
+  //     return res.json({error: "Error writing to file"});
+  //   }
+  //   console.log(JSON.stringify(data));
+  //   console.log(JSON.stringify(dbJSON));
   res.json(dbJSON);
+  // });
 });
 
 app.delete("/api/notes/:id", function(req, res) {
@@ -42,9 +49,8 @@ app.delete("/api/notes/:id", function(req, res) {
     if (err) {
       return res.json({error: "Error writing to file"});
     }
-
-    // return res.json(note);
   });
+  res.send('Got a DELETE request')
 });
 
 app.post("/api/notes", function(req, res) {
