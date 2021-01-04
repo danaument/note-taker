@@ -30,8 +30,14 @@ app.get("/notes", function(req, res) {
   res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
-app.post("/notes", function(req, res) {
+app.get("/api/notes", function(req, res) {
+  res.json(dbJSON);
+});
+
+
+app.post("/api/notes", function(req, res) {
   // Validate request body
+  console.log(req);
   if(!req.body.title) {
     return res.json({error: "Missing required title"});
   }
