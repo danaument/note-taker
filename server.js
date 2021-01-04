@@ -43,7 +43,7 @@ app.delete("/api/notes/:id", function(req, res) {
       return res.json({error: "Error writing to file"});
     }
 
-    return res.json(note);
+    // return res.json(note);
   });
 });
 
